@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">taskMaster</string>
+    <string name="add_task_text_view"/>
+    <string name="submitted_confirmation"> Submitted! </string>
+    <string name="all_tasks_image_placeholder" />
+    <string name="all_tasks_textview" />
+
+</resources>
