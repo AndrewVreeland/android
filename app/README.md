@@ -16,4 +16,11 @@ the home page now has three task buttons that when clicked on bring you to the t
 ![Settings Page](../images/lab27/lab27SettingsPage.png)
 ![Task 1 Details Page](../images/lab27/lab27Task1Page.png)
 ![Task 2 Details Page](../images/lab27/lab27Task2Page.png)
-Task three works the same I just didn't ake a screen shot
+Task three works the same I just didn't take a screen shot
+
+## Lab 28 
+
+added recycler view and the ability to click on each 
+task and then be brought to the task details page. 
+Also added in task status to differentiate the different states of the tasks. 
+![Recycler view image](../images/lab28/added_teh_recycler_view.png)

@@ -14,5 +14,8 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="no_task_name"> No Task Name </string>
+    <string name="no_body"> No Body</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">blank_task_name</string>
 
 </resources>
