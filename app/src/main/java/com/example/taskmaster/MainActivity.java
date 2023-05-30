@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     TaskMasterDatabase taskMasterDatabase;
 
     public static final String DATABASE_NAME = "tasks_database";
+    List<Task> tasks;
+    TaskListRecyclerViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,20 +52,23 @@ public class MainActivity extends AppCompatActivity {
                 .allowMainThreadQueries()
                 .build();
 
-        taskMasterDatabase.taskDao().findAllTasks();
+        tasks = taskMasterDatabase.taskDao().findAllTasks();
 
-        List<Task> tasks = new ArrayList<>();
         setUpSettingsButton();
-        setUpRecyclerView(tasks);
+        setUpRecyclerView();
         addTaskButton();
         viewAllTasksButton();
     }
 
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"SetTextI18n", "NotifyDataSetChanged"})
     @Override
     protected void onResume() {
         super.onResume();
+        tasks.clear();
+        tasks.addAll(taskMasterDatabase.taskDao().findAllTasks());
+        adapter.notifyDataSetChanged();
+
 
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String userName = preferences.getString(SettingsActivity.USER_NICKNAME_TAG, "No User Name");
@@ -77,30 +82,27 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void setUpRecyclerView(List<Task> tasks) {
-        // Step 1.2 grab RecyclerView
+    public void setUpRecyclerView() {
+
         RecyclerView taskListRecyclerView = (RecyclerView) findViewById(R.id.homeTaskListRecyclerView);
-        // Step 1-3 set the layout manager of the RecyclerView to a LinearLayoutManager
+
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         taskListRecyclerView.setLayoutManager(layoutManager);
 
-// step 1.5 create and attach the recyclerView.adapter
-//        TaskListRecyclerViewAdapter adapter = new TaskListRecyclerViewAdapter();
-        // 2-3 change the creation of adapter to take list of tasks
-        // 3-1 hand in activity context to the recycler view adapter creation
-        TaskListRecyclerViewAdapter adapter = new TaskListRecyclerViewAdapter(tasks, this);
+
+         adapter = new TaskListRecyclerViewAdapter(tasks, this);
         taskListRecyclerView.setAdapter(adapter);
     }
 
     public void addTaskButton() {
         Button goToAllTasksButton = (Button) findViewById(R.id.homeAllTasksButton);
-        //Add onClickListener
+
         goToAllTasksButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Create an intent -> where you're coming from and where you're going
+
                 Intent goToAddTaskIntent = new Intent(MainActivity.this, AddTaskActivity.class);
-                // Start Intent
+
                 startActivity(goToAddTaskIntent);
             }
         });

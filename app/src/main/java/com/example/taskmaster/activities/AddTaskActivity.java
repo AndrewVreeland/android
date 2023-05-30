@@ -38,8 +38,8 @@ public class AddTaskActivity extends AppCompatActivity {
                 ).fallbackToDestructiveMigration()
                 .allowMainThreadQueries()
                 .build();
-                setUpAddTaskButton();
-                
+        setupAddTaskButton();
+        setupTypeSpinner();
     }
     public void setupTypeSpinner() {
         taskTypeSpinner.setAdapter(new ArrayAdapter<>(
@@ -64,9 +64,5 @@ public class AddTaskActivity extends AppCompatActivity {
         });
     }
 
-    public void setUpAddTaskButton(){
-        findViewById(R.id.add_task_activity_button).setOnClickListener(view -> {
-
-        });
     }
-}
+

@@ -21,7 +21,7 @@ public class Task  {
         this.name = name;
         this.body = body;
         this.dateCreated = dateCreated;
-        this.type = type;
+        this.type = TaskTypeEnum.NEW;
     }
 
     public enum TaskTypeEnum {
