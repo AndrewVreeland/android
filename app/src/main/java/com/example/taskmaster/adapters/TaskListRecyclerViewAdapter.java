@@ -59,6 +59,7 @@ public static class TaskListViewHolder extends RecyclerView.ViewHolder {
         // 2.4 Bind the data items to the fragments
         TextView taskFragmentTextView = (TextView) holder.itemView.findViewById(R.id.task_fragment);
         String taskName = tasks.get(position).getName();
+        String taskBody = tasks.get(position).getBody();
         String fragmentText = position + ". " + taskName;
         taskFragmentTextView.setText(fragmentText);
 
@@ -68,6 +69,7 @@ public static class TaskListViewHolder extends RecyclerView.ViewHolder {
         taskFragmentTextView.setOnClickListener(v -> {
             Intent goToTaskDetailsIntent= new Intent (callingActivity, TaskDetailActivity.class);
             goToTaskDetailsIntent.putExtra(MainActivity.USER_TASK_TAG, taskName);
+            goToTaskDetailsIntent.putExtra(MainActivity.USER_TASK_BODY_TAG, taskBody);
             callingActivity.startActivity(goToTaskDetailsIntent);
         });
     }

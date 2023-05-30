@@ -1,26 +1,60 @@
 package com.example.taskmaster.models;
 
+import android.widget.EditText;
+
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+import java.util.Date;
+
 // make a dta class
-public class Task {
+@Entity
+public class Task  {
+@PrimaryKey(autoGenerate = true) public Long id;
     private String name;
     private String body;
+    private final java.util.Date dateCreated;
+   private TaskTypeEnum type;
 
-    private TaskState taskState;
 
-    public Task(String name, String body, TaskState taskState) {
+    public Task(String name, String body, Date dateCreated, TaskTypeEnum type) {
         this.name = name;
         this.body = body;
-        this.taskState = taskState;
+        this.dateCreated = dateCreated;
+        this.type = type;
+    }
+
+    public enum TaskTypeEnum {
+        NEW("New"),
+        ASSIGNED("Assigned"),
+        IN_PROGRESS("In Progress"),
+        COMPLETE("Complete");
+
+        private final String taskType;
+
+        TaskTypeEnum(String taskType) {
+            this.taskType = taskType;
+        }
+
+        public static TaskTypeEnum fromString(String possibleTaskType) {
+            for (TaskTypeEnum type : TaskTypeEnum.values()) {
+                if (type.taskType.equals(possibleTaskType)) {
+                    return type;
+                }
+            }
+            return null;
+        }
+        @Override
+        public String toString() {
+            return "TaskTypeEnum{" +
+                    "taskType='" + taskType + '\'' +
+                    '}';
+        }
 
     }
 
-    @Override
-    public String toString() {
-        return "Task{" +
-                "name='" + name + '\'' +
-                ", body='" + body + '\'' +
-                ", taskState=" + taskState +
-                '}';
+    public Long getId() {
+        return id;
     }
 
     public String getName() {
@@ -39,11 +73,21 @@ public class Task {
         this.body = body;
     }
 
-    public TaskState getTaskState() {
-        return taskState;
+    public Date getDateCreated() {
+        return dateCreated;
     }
 
-    public void setTaskState(TaskState taskState) {
-        this.taskState = taskState;
+    public TaskTypeEnum getType() {
+        return type;
+    }
+
+    public void setType(TaskTypeEnum type) {
+        this.type = type;
     }
 }
+
+
+
+
+
+

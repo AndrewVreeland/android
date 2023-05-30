@@ -3,6 +3,7 @@ package com.example.taskmaster;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -20,6 +21,7 @@ import com.example.taskmaster.activities.AllTasksActivity;
 import com.example.taskmaster.activities.SettingsActivity;
 import com.example.taskmaster.activities.TaskDetailActivity;
 import com.example.taskmaster.adapters.TaskListRecyclerViewAdapter;
+import com.example.taskmaster.database.TaskMasterDatabase;
 import com.example.taskmaster.models.Task;
 import com.example.taskmaster.models.TaskState;
 
@@ -31,37 +33,36 @@ public class MainActivity extends AppCompatActivity {
     public static final String USER_TASK_BODY_TAG = "taskBody";
     SharedPreferences preferences;
 
+    TaskMasterDatabase taskMasterDatabase;
+
+    public static final String DATABASE_NAME = "tasks_database";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-// step 2.2 create data itmes
+        taskMasterDatabase = Room.databaseBuilder(
+                        getApplicationContext(),
+                        TaskMasterDatabase.class,
+                        DATABASE_NAME)
+                .fallbackToDestructiveMigration()
+                .allowMainThreadQueries()
+                .build();
+
+        taskMasterDatabase.taskDao().findAllTasks();
+
         List<Task> tasks = new ArrayList<>();
-        tasks.add(new Task("Mow the grass", "liokjojwojdoqwd", TaskState.NEW ));
-        tasks.add(new Task("Wash The Car", "kjwhqkjhnqd",TaskState.ASSIGNED));
-        tasks.add(new Task("Clean the dishes","qkjhbwdhkqbj", TaskState.COMPLETE ));
-        tasks.add(new Task("Fold laundry", "kjqbnwdqjkw", TaskState.ASSIGNED));
-        tasks.add(new Task("Go for a run", "qwjhdbqw", TaskState.IN_PROGRESS));
-
-        // step 2.3 hand in data items in here and recycler view
-
-
-
-
-
-
-        // Create and trigger intent; grab the button
         setUpSettingsButton();
         setUpRecyclerView(tasks);
         addTaskButton();
         viewAllTasksButton();
-
     }
+
 
     @SuppressLint("SetTextI18n")
     @Override
-    protected  void onResume(){
+    protected void onResume() {
         super.onResume();
 
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void setUpRecyclerView(List<Task> tasks){
+    public void setUpRecyclerView(List<Task> tasks) {
         // Step 1.2 grab RecyclerView
         RecyclerView taskListRecyclerView = (RecyclerView) findViewById(R.id.homeTaskListRecyclerView);
         // Step 1-3 set the layout manager of the RecyclerView to a LinearLayoutManager
@@ -87,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
 //        TaskListRecyclerViewAdapter adapter = new TaskListRecyclerViewAdapter();
         // 2-3 change the creation of adapter to take list of tasks
         // 3-1 hand in activity context to the recycler view adapter creation
-        TaskListRecyclerViewAdapter adapter = new TaskListRecyclerViewAdapter(tasks, this );
+        TaskListRecyclerViewAdapter adapter = new TaskListRecyclerViewAdapter(tasks, this);
         taskListRecyclerView.setAdapter(adapter);
     }
 
