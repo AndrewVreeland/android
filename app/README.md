@@ -33,3 +33,7 @@ added the ability to add tasks to the database and then for those tasks to popul
 
 ## Lab 30
 added three espresso tests
+
+## Lab 31
+added amplify to application, data is now stored via AWS Dynamo DB. We have the date posted via DynamoDB status. 
+![Home Screen](../images/lab31/lab31homescreen.png)

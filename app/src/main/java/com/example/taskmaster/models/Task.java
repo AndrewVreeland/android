@@ -1,16 +1,14 @@
 package com.example.taskmaster.models;
 
-import android.widget.EditText;
 
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
+
 
 import java.util.Date;
 
 // make a dta class
-@Entity
+
 public class Task  {
-@PrimaryKey(autoGenerate = true) public Long id;
+
     private String name;
     private String body;
     private final java.util.Date dateCreated;
@@ -53,9 +51,7 @@ public class Task  {
 
     }
 
-    public Long getId() {
-        return id;
-    }
+
 
     public String getName() {
         return name;

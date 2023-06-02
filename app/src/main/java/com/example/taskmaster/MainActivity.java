@@ -1,29 +1,30 @@
 package com.example.taskmaster;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.amplifyframework.api.graphql.model.ModelQuery;
+import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.Task;
 import com.example.taskmaster.activities.AddTaskActivity;
 import com.example.taskmaster.activities.AllTasksActivity;
 import com.example.taskmaster.activities.SettingsActivity;
-import com.example.taskmaster.activities.TaskDetailActivity;
 import com.example.taskmaster.adapters.TaskListRecyclerViewAdapter;
-import com.example.taskmaster.database.TaskMasterDatabase;
-import com.example.taskmaster.models.Task;
-import com.example.taskmaster.models.TaskState;
+//import com.example.taskmaster.models.Task;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,26 +34,17 @@ public class MainActivity extends AppCompatActivity {
     public static final String USER_TASK_BODY_TAG = "taskBody";
     SharedPreferences preferences;
 
-    TaskMasterDatabase taskMasterDatabase;
 
     public static final String DATABASE_NAME = "tasks_database";
     List<Task> tasks;
     TaskListRecyclerViewAdapter adapter;
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        taskMasterDatabase = Room.databaseBuilder(
-                        getApplicationContext(),
-                        TaskMasterDatabase.class,
-                        DATABASE_NAME)
-                .fallbackToDestructiveMigration()
-                .allowMainThreadQueries()
-                .build();
-
-        tasks = taskMasterDatabase.taskDao().findAllTasks();
+        tasks = new ArrayList<>();
 
         setUpSettingsButton();
         setUpRecyclerView();
@@ -65,10 +57,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        tasks.clear();
-        tasks.addAll(taskMasterDatabase.taskDao().findAllTasks());
-        adapter.notifyDataSetChanged();
 
+        Amplify.API.query(
+                ModelQuery.list(Task.class),
+                success -> {
+                    Log.i(TAG, "Read products successfully!");
+                    tasks.clear();
+                    for (Task databaseTask : success.getData()) {
+                        tasks.add(databaseTask);
+                    }
+
+                    runOnUiThread(() -> adapter.notifyDataSetChanged());
+                },
+                failure -> Log.i(TAG, "Did not read tasks successfully")
+        );
+        adapter.notifyDataSetChanged();
 
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String userName = preferences.getString(SettingsActivity.USER_NICKNAME_TAG, "No User Name");
@@ -90,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         taskListRecyclerView.setLayoutManager(layoutManager);
 
 
-         adapter = new TaskListRecyclerViewAdapter(tasks, this);
+        adapter = new TaskListRecyclerViewAdapter(tasks, this);
         taskListRecyclerView.setAdapter(adapter);
     }
 

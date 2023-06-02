@@ -2,6 +2,7 @@ package com.example.taskmaster.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,17 +11,26 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amplifyframework.datastore.generated.model.Task;
 import com.example.taskmaster.MainActivity;
 import com.example.taskmaster.R;
 import com.example.taskmaster.activities.TaskDetailActivity;
-import com.example.taskmaster.models.Task;
 
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 // step 1.4 sole purpose is to manage recyclerview (a recycler view adapter)
 
 // 3.1 clean up recyclerviewadapter to actually use taskListRecyvlerViewAdapter
 public class TaskListRecyclerViewAdapter extends RecyclerView.Adapter<TaskListRecyclerViewAdapter.TaskListViewHolder>  {
+    public static final String TAG = "TaskListRecyclerViewAdapter";
+
     // 2.3 at top of class add list of data items as a field
     private List<Task> tasks;
     // 3.2 cont. add a calling activity context as field
@@ -58,9 +68,25 @@ public static class TaskListViewHolder extends RecyclerView.ViewHolder {
     public void onBindViewHolder(@NonNull TaskListViewHolder holder, int position) {
         // 2.4 Bind the data items to the fragments
         TextView taskFragmentTextView = (TextView) holder.itemView.findViewById(R.id.task_fragment);
+
+        DateFormat dateCreatedIso8601InputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault());
+        dateCreatedIso8601InputFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+        DateFormat dateCreatedOutputFormat = new SimpleDateFormat("yyyy-MM-dd");
+        dateCreatedOutputFormat.setTimeZone(TimeZone.getDefault());
+        String dateCreatedCreateString = "";
+        try{
+            Date dateCreatedJavaDate = dateCreatedIso8601InputFormat.parse(tasks.get(position).getDateCreated().format());
+            if(dateCreatedJavaDate != null){
+                dateCreatedCreateString = dateCreatedOutputFormat.format(dateCreatedJavaDate);
+            }
+        } catch (ParseException e) {
+            Log.e(TAG, "failed to parse date" + e);
+            e.printStackTrace();
+        }
+
         String taskName = tasks.get(position).getName();
-        String taskBody = tasks.get(position).getBody();
-        String fragmentText = position + ". " + taskName;
+        String taskBody = tasks.get(position).getDescription();
+        String fragmentText = position + ". " + taskName + " Date Created: " + dateCreatedCreateString;
         taskFragmentTextView.setText(fragmentText);
 
         // 3-3: create onclick listener make an intent insidie it and call intect with an extra to go to details page
