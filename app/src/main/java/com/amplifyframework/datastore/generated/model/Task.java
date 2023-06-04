@@ -1,6 +1,7 @@
 package com.amplifyframework.datastore.generated.model;
 
 import com.amplifyframework.core.model.temporal.Temporal;
+import com.amplifyframework.core.model.annotations.BelongsTo;
 
 import java.util.List;
 import java.util.UUID;
@@ -24,17 +25,20 @@ import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 @ModelConfig(pluralName = "Tasks", type = Model.Type.USER, version = 1, authRules = {
   @AuthRule(allow = AuthStrategy.PUBLIC, operations = { ModelOperation.CREATE, ModelOperation.UPDATE, ModelOperation.DELETE, ModelOperation.READ })
 })
+@Index(name = "byOwners", fields = {"taskOwnerId","name"})
 public final class Task implements Model {
   public static final QueryField ID = field("Task", "id");
   public static final QueryField NAME = field("Task", "name");
   public static final QueryField DESCRIPTION = field("Task", "description");
   public static final QueryField DATE_CREATED = field("Task", "dateCreated");
   public static final QueryField TASK_CATEGORY = field("Task", "taskCategory");
+  public static final QueryField TASK_OWNER = field("Task", "taskOwnerId");
   private final @ModelField(targetType="ID", isRequired = true) String id;
   private final @ModelField(targetType="String", isRequired = true) String name;
   private final @ModelField(targetType="String") String description;
   private final @ModelField(targetType="AWSDateTime") Temporal.DateTime dateCreated;
   private final @ModelField(targetType="TaskCategoryEnum") TaskCategoryEnum taskCategory;
+  private final @ModelField(targetType="TaskOwner") @BelongsTo(targetName = "taskOwnerId", targetNames = {"taskOwnerId"}, type = TaskOwner.class) TaskOwner taskOwner;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime createdAt;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime updatedAt;
   public String resolveIdentifier() {
@@ -61,6 +65,10 @@ public final class Task implements Model {
       return taskCategory;
   }
   
+  public TaskOwner getTaskOwner() {
+      return taskOwner;
+  }
+  
   public Temporal.DateTime getCreatedAt() {
       return createdAt;
   }
@@ -69,12 +77,13 @@ public final class Task implements Model {
       return updatedAt;
   }
   
-  private Task(String id, String name, String description, Temporal.DateTime dateCreated, TaskCategoryEnum taskCategory) {
+  private Task(String id, String name, String description, Temporal.DateTime dateCreated, TaskCategoryEnum taskCategory, TaskOwner taskOwner) {
     this.id = id;
     this.name = name;
     this.description = description;
     this.dateCreated = dateCreated;
     this.taskCategory = taskCategory;
+    this.taskOwner = taskOwner;
   }
   
   @Override
@@ -90,6 +99,7 @@ public final class Task implements Model {
               ObjectsCompat.equals(getDescription(), task.getDescription()) &&
               ObjectsCompat.equals(getDateCreated(), task.getDateCreated()) &&
               ObjectsCompat.equals(getTaskCategory(), task.getTaskCategory()) &&
+              ObjectsCompat.equals(getTaskOwner(), task.getTaskOwner()) &&
               ObjectsCompat.equals(getCreatedAt(), task.getCreatedAt()) &&
               ObjectsCompat.equals(getUpdatedAt(), task.getUpdatedAt());
       }
@@ -103,6 +113,7 @@ public final class Task implements Model {
       .append(getDescription())
       .append(getDateCreated())
       .append(getTaskCategory())
+      .append(getTaskOwner())
       .append(getCreatedAt())
       .append(getUpdatedAt())
       .toString()
@@ -118,6 +129,7 @@ public final class Task implements Model {
       .append("description=" + String.valueOf(getDescription()) + ", ")
       .append("dateCreated=" + String.valueOf(getDateCreated()) + ", ")
       .append("taskCategory=" + String.valueOf(getTaskCategory()) + ", ")
+      .append("taskOwner=" + String.valueOf(getTaskOwner()) + ", ")
       .append("createdAt=" + String.valueOf(getCreatedAt()) + ", ")
       .append("updatedAt=" + String.valueOf(getUpdatedAt()))
       .append("}")
@@ -142,6 +154,7 @@ public final class Task implements Model {
       null,
       null,
       null,
+      null,
       null
     );
   }
@@ -151,7 +164,8 @@ public final class Task implements Model {
       name,
       description,
       dateCreated,
-      taskCategory);
+      taskCategory,
+      taskOwner);
   }
   public interface NameStep {
     BuildStep name(String name);
@@ -164,6 +178,7 @@ public final class Task implements Model {
     BuildStep description(String description);
     BuildStep dateCreated(Temporal.DateTime dateCreated);
     BuildStep taskCategory(TaskCategoryEnum taskCategory);
+    BuildStep taskOwner(TaskOwner taskOwner);
   }
   
 
@@ -173,6 +188,7 @@ public final class Task implements Model {
     private String description;
     private Temporal.DateTime dateCreated;
     private TaskCategoryEnum taskCategory;
+    private TaskOwner taskOwner;
     @Override
      public Task build() {
         String id = this.id != null ? this.id : UUID.randomUUID().toString();
@@ -182,7 +198,8 @@ public final class Task implements Model {
           name,
           description,
           dateCreated,
-          taskCategory);
+          taskCategory,
+          taskOwner);
     }
     
     @Override
@@ -210,6 +227,12 @@ public final class Task implements Model {
         return this;
     }
     
+    @Override
+     public BuildStep taskOwner(TaskOwner taskOwner) {
+        this.taskOwner = taskOwner;
+        return this;
+    }
+    
     /**
      * @param id id
      * @return Current Builder instance, for fluent method chaining
@@ -222,12 +245,13 @@ public final class Task implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String name, String description, Temporal.DateTime dateCreated, TaskCategoryEnum taskCategory) {
+    private CopyOfBuilder(String id, String name, String description, Temporal.DateTime dateCreated, TaskCategoryEnum taskCategory, TaskOwner taskOwner) {
       super.id(id);
       super.name(name)
         .description(description)
         .dateCreated(dateCreated)
-        .taskCategory(taskCategory);
+        .taskCategory(taskCategory)
+        .taskOwner(taskOwner);
     }
     
     @Override
@@ -248,6 +272,11 @@ public final class Task implements Model {
     @Override
      public CopyOfBuilder taskCategory(TaskCategoryEnum taskCategory) {
       return (CopyOfBuilder) super.taskCategory(taskCategory);
+    }
+    
+    @Override
+     public CopyOfBuilder taskOwner(TaskOwner taskOwner) {
+      return (CopyOfBuilder) super.taskOwner(taskOwner);
     }
   }
   

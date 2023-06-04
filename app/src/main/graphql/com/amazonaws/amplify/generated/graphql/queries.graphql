@@ -1,11 +1,63 @@
 # this is an auto generated file. This will be overwritten
+query GetTaskOwner($id: ID!) {
+  getTaskOwner(id: $id) {
+    id
+    name
+    email
+    tasks {
+      items {
+        id
+        name
+        taskOwnerId
+        description
+        dateCreated
+        taskCategory
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+query ListTaskOwners(
+  $filter: ModelTaskOwnerFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listTaskOwners(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      email
+      tasks {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
 query GetTask($id: ID!) {
   getTask(id: $id) {
     id
     name
+    taskOwnerId
     description
     dateCreated
     taskCategory
+    taskOwner {
+      id
+      name
+      email
+      tasks {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
     createdAt
     updatedAt
   }
@@ -19,9 +71,53 @@ query ListTasks(
     items {
       id
       name
+      taskOwnerId
       description
       dateCreated
       taskCategory
+      taskOwner {
+        id
+        name
+        email
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query TasksByTaskOwnerIdAndName(
+  $taskOwnerId: ID!
+  $name: ModelStringKeyConditionInput
+  $sortDirection: ModelSortDirection
+  $filter: ModelTaskFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  tasksByTaskOwnerIdAndName(
+    taskOwnerId: $taskOwnerId
+    name: $name
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      name
+      taskOwnerId
+      description
+      dateCreated
+      taskCategory
+      taskOwner {
+        id
+        name
+        email
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }

@@ -43,8 +43,20 @@
         android:text="Save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.305"
+        app:layout_constraintHorizontal_bias="0.326"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userNameActivityEditText"
-        app:layout_constraintVertical_bias="0.054" />
+        app:layout_constraintVertical_bias="0.253" />
+
+    <Spinner
+        android:id="@+id/settingsTaskOwnerSpinner"
+        android:layout_width="285dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/userSettingsSaveButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.396"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userNameActivityEditText"
+        app:layout_constraintVertical_bias="0.263" />
 </androidx.constraintlayout.widget.ConstraintLayout>

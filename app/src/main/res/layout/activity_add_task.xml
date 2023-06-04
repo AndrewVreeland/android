@@ -6,13 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".activities.AddTaskActivity">
 
+    <Spinner
+        android:id="@+id/addTaskEnumOwnerTypeSpinner"
+        android:layout_width="351dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/AddTaskEnumTypeSpinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDate"
+        app:layout_constraintVertical_bias="0.0" />
+
     <TextView
         android:id="@+id/addTaskTitle"
         android:layout_width="120dp"
         android:layout_height="39dp"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="44dp"
-        android:text="Add Task"
+        android:text="@string/add_task3"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/AddTaskETTitle"
@@ -21,7 +34,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints,TextSizeCheck" />
 
     <EditText
         android:id="@+id/AddTaskETTitle"
@@ -31,13 +44,14 @@
         android:layout_marginTop="116dp"
         android:layout_marginEnd="40dp"
         android:ems="10"
-        android:hint="My Task"
+        android:hint="@string/my_task"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.409"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/AddTaskEDTitle"
@@ -46,44 +60,48 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="44dp"
         android:layout_marginEnd="40dp"
+        android:autofillHints=""
         android:ems="10"
-        android:hint="Task Description"
+        android:hint="@string/task_description2"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.475"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AddTaskETTitle"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints,DuplicateSpeakableTextCheck" />
 
     <Button
         android:id="@+id/add_task_activity_button"
         android:layout_width="123dp"
         android:layout_height="50dp"
         android:layout_marginTop="66dp"
-        android:text="Add Task"
+        android:text="@string/add_task"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.204"
+        app:layout_constraintHorizontal_bias="0.201"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AddTaskEDTitle"
-        app:layout_constraintVertical_bias="0.299"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintVertical_bias="0.664"
+        tools:ignore="MissingConstraints,DuplicateSpeakableTextCheck" />
 
     <TextView
         android:id="@+id/submitted_confirmation"
         android:layout_width="180dp"
         android:layout_height="27dp"
-        android:layout_marginStart="68dp"
         android:textColor="#DD0000"
+        app:layout_constraintBottom_toTopOf="@+id/add_task_activity_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.186"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="584dp" />
+        app:layout_constraintTop_toBottomOf="@+id/AddTaskEnumTypeSpinner"
+        app:layout_constraintVertical_bias="0.694" />
 
     <TextView
         android:id="@+id/taskTitleAboveTextBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="Task Title"
+        android:text="@string/task_title"
         android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/AddTaskETTitle"
         app:layout_constraintEnd_toEndOf="parent"
@@ -96,7 +114,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="23dp"
         android:layout_marginBottom="2dp"
-        android:text="Task Description"
+        android:text="@string/task_description"
         android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/AddTaskEDTitle"
         app:layout_constraintEnd_toEndOf="parent"
@@ -110,19 +128,21 @@
         android:layout_width="291dp"
         android:layout_height="55dp"
         android:layout_marginTop="40dp"
+        android:autofillHints=""
         android:ems="10"
-        android:hint="Task Date"
+        android:hint="@string/task_date2"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AddTaskEDTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/AddTaskEDTitle"
+        tools:ignore="DuplicateSpeakableTextCheck" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="2dp"
-        android:text="Task Date"
+        android:text="@string/task_date"
         android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/editTextDate"
         app:layout_constraintEnd_toEndOf="parent"
@@ -133,12 +153,13 @@
 
     <Spinner
         android:id="@+id/AddTaskEnumTypeSpinner"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
+        android:layout_width="351dp"
+        android:layout_height="48dp"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
         app:layout_constraintBottom_toTopOf="@+id/add_task_activity_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextDate"
+        app:layout_constraintVertical_bias="0.647" />
 </androidx.constraintlayout.widget.ConstraintLayout>

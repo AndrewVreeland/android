@@ -17,5 +17,13 @@
     <string name="no_body"> No Body</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">blank_task_name</string>
+    <string name="task_date">Task Date</string>
+    <string name="task_date2">Task Date</string>
+    <string name="task_description">Task Description</string>
+    <string name="task_title">Task Title</string>
+    <string name="add_task">Add Task</string>
+    <string name="task_description2">Task Description</string>
+    <string name="my_task">My Task</string>
+    <string name="add_task3">Add Task</string>
 
 </resources>

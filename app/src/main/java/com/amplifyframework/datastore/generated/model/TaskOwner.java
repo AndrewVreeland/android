@@ -1,7 +1,9 @@
-package com.example.taskmaster.model;
+package com.amplifyframework.datastore.generated.model;
 
+import com.amplifyframework.core.model.annotations.HasMany;
 import com.amplifyframework.core.model.temporal.Temporal;
 
+import java.util.List;
 import java.util.UUID;
 import java.util.Objects;
 
@@ -11,28 +13,26 @@ import com.amplifyframework.core.model.AuthStrategy;
 import com.amplifyframework.core.model.Model;
 import com.amplifyframework.core.model.ModelOperation;
 import com.amplifyframework.core.model.annotations.AuthRule;
+import com.amplifyframework.core.model.annotations.Index;
 import com.amplifyframework.core.model.annotations.ModelConfig;
 import com.amplifyframework.core.model.annotations.ModelField;
 import com.amplifyframework.core.model.query.predicate.QueryField;
 
 import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 
-/** This is an auto generated class representing the Task type in your schema. */
+/** This is an auto generated class representing the TaskOwner type in your schema. */
 @SuppressWarnings("all")
-@ModelConfig(pluralName = "Tasks", type = Model.Type.USER, version = 1, authRules = {
+@ModelConfig(pluralName = "TaskOwners", type = Model.Type.USER, version = 1, authRules = {
   @AuthRule(allow = AuthStrategy.PUBLIC, operations = { ModelOperation.CREATE, ModelOperation.UPDATE, ModelOperation.DELETE, ModelOperation.READ })
 })
-public final class Task implements Model {
-  public static final QueryField ID = field("Task", "id");
-  public static final QueryField NAME = field("Task", "name");
-  public static final QueryField DESCRIPTION = field("Task", "description");
-  public static final QueryField DATE_CREATED = field("Task", "dateCreated");
-  public static final QueryField TASK_CATEGORY = field("Task", "taskCategory");
+public final class TaskOwner implements Model {
+  public static final QueryField ID = field("TaskOwner", "id");
+  public static final QueryField NAME = field("TaskOwner", "name");
+  public static final QueryField EMAIL = field("TaskOwner", "email");
   private final @ModelField(targetType="ID", isRequired = true) String id;
   private final @ModelField(targetType="String", isRequired = true) String name;
-  private final @ModelField(targetType="String") String description;
-  private final @ModelField(targetType="AWSDateTime") Temporal.DateTime dateCreated;
-  private final @ModelField(targetType="TaskCategoryEnum") TaskCategoryEnum taskCategory;
+  private final @ModelField(targetType="String") String email;
+  private final @ModelField(targetType="Task") @HasMany(associatedWith = "taskOwner", type = Task.class) List<Task> tasks = null;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime createdAt;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime updatedAt;
   public String resolveIdentifier() {
@@ -47,16 +47,12 @@ public final class Task implements Model {
       return name;
   }
   
-  public String getDescription() {
-      return description;
+  public String getEmail() {
+      return email;
   }
   
-  public Temporal.DateTime getDateCreated() {
-      return dateCreated;
-  }
-  
-  public TaskCategoryEnum getTaskCategory() {
-      return taskCategory;
+  public List<Task> getTasks() {
+      return tasks;
   }
   
   public Temporal.DateTime getCreatedAt() {
@@ -67,12 +63,10 @@ public final class Task implements Model {
       return updatedAt;
   }
   
-  private Task(String id, String name, String description, Temporal.DateTime dateCreated, TaskCategoryEnum taskCategory) {
+  private TaskOwner(String id, String name, String email) {
     this.id = id;
     this.name = name;
-    this.description = description;
-    this.dateCreated = dateCreated;
-    this.taskCategory = taskCategory;
+    this.email = email;
   }
   
   @Override
@@ -82,14 +76,12 @@ public final class Task implements Model {
       } else if(obj == null || getClass() != obj.getClass()) {
         return false;
       } else {
-      Task task = (Task) obj;
-      return ObjectsCompat.equals(getId(), task.getId()) &&
-              ObjectsCompat.equals(getName(), task.getName()) &&
-              ObjectsCompat.equals(getDescription(), task.getDescription()) &&
-              ObjectsCompat.equals(getDateCreated(), task.getDateCreated()) &&
-              ObjectsCompat.equals(getTaskCategory(), task.getTaskCategory()) &&
-              ObjectsCompat.equals(getCreatedAt(), task.getCreatedAt()) &&
-              ObjectsCompat.equals(getUpdatedAt(), task.getUpdatedAt());
+      TaskOwner taskOwner = (TaskOwner) obj;
+      return ObjectsCompat.equals(getId(), taskOwner.getId()) &&
+              ObjectsCompat.equals(getName(), taskOwner.getName()) &&
+              ObjectsCompat.equals(getEmail(), taskOwner.getEmail()) &&
+              ObjectsCompat.equals(getCreatedAt(), taskOwner.getCreatedAt()) &&
+              ObjectsCompat.equals(getUpdatedAt(), taskOwner.getUpdatedAt());
       }
   }
   
@@ -98,9 +90,7 @@ public final class Task implements Model {
     return new StringBuilder()
       .append(getId())
       .append(getName())
-      .append(getDescription())
-      .append(getDateCreated())
-      .append(getTaskCategory())
+      .append(getEmail())
       .append(getCreatedAt())
       .append(getUpdatedAt())
       .toString()
@@ -110,12 +100,10 @@ public final class Task implements Model {
   @Override
    public String toString() {
     return new StringBuilder()
-      .append("Task {")
+      .append("TaskOwner {")
       .append("id=" + String.valueOf(getId()) + ", ")
       .append("name=" + String.valueOf(getName()) + ", ")
-      .append("description=" + String.valueOf(getDescription()) + ", ")
-      .append("dateCreated=" + String.valueOf(getDateCreated()) + ", ")
-      .append("taskCategory=" + String.valueOf(getTaskCategory()) + ", ")
+      .append("email=" + String.valueOf(getEmail()) + ", ")
       .append("createdAt=" + String.valueOf(getCreatedAt()) + ", ")
       .append("updatedAt=" + String.valueOf(getUpdatedAt()))
       .append("}")
@@ -134,11 +122,9 @@ public final class Task implements Model {
    * @param id the id of the existing item this instance will represent
    * @return an instance of this model with only ID populated
    */
-  public static Task justId(String id) {
-    return new Task(
+  public static TaskOwner justId(String id) {
+    return new TaskOwner(
       id,
-      null,
-      null,
       null,
       null
     );
@@ -147,9 +133,7 @@ public final class Task implements Model {
   public CopyOfBuilder copyOfBuilder() {
     return new CopyOfBuilder(id,
       name,
-      description,
-      dateCreated,
-      taskCategory);
+      email);
   }
   public interface NameStep {
     BuildStep name(String name);
@@ -157,30 +141,24 @@ public final class Task implements Model {
   
 
   public interface BuildStep {
-    Task build();
+    TaskOwner build();
     BuildStep id(String id);
-    BuildStep description(String description);
-    BuildStep dateCreated(Temporal.DateTime dateCreated);
-    BuildStep taskCategory(TaskCategoryEnum taskCategory);
+    BuildStep email(String email);
   }
   
 
   public static class Builder implements NameStep, BuildStep {
     private String id;
     private String name;
-    private String description;
-    private Temporal.DateTime dateCreated;
-    private TaskCategoryEnum taskCategory;
+    private String email;
     @Override
-     public Task build() {
+     public TaskOwner build() {
         String id = this.id != null ? this.id : UUID.randomUUID().toString();
         
-        return new Task(
+        return new TaskOwner(
           id,
           name,
-          description,
-          dateCreated,
-          taskCategory);
+          email);
     }
     
     @Override
@@ -191,20 +169,8 @@ public final class Task implements Model {
     }
     
     @Override
-     public BuildStep description(String description) {
-        this.description = description;
-        return this;
-    }
-    
-    @Override
-     public BuildStep dateCreated(Temporal.DateTime dateCreated) {
-        this.dateCreated = dateCreated;
-        return this;
-    }
-    
-    @Override
-     public BuildStep taskCategory(TaskCategoryEnum taskCategory) {
-        this.taskCategory = taskCategory;
+     public BuildStep email(String email) {
+        this.email = email;
         return this;
     }
     
@@ -220,12 +186,10 @@ public final class Task implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String name, String description, Temporal.DateTime dateCreated, TaskCategoryEnum taskCategory) {
+    private CopyOfBuilder(String id, String name, String email) {
       super.id(id);
       super.name(name)
-        .description(description)
-        .dateCreated(dateCreated)
-        .taskCategory(taskCategory);
+        .email(email);
     }
     
     @Override
@@ -234,18 +198,8 @@ public final class Task implements Model {
     }
     
     @Override
-     public CopyOfBuilder description(String description) {
-      return (CopyOfBuilder) super.description(description);
-    }
-    
-    @Override
-     public CopyOfBuilder dateCreated(Temporal.DateTime dateCreated) {
-      return (CopyOfBuilder) super.dateCreated(dateCreated);
-    }
-    
-    @Override
-     public CopyOfBuilder taskCategory(TaskCategoryEnum taskCategory) {
-      return (CopyOfBuilder) super.taskCategory(taskCategory);
+     public CopyOfBuilder email(String email) {
+      return (CopyOfBuilder) super.email(email);
     }
   }
   

@@ -1,5 +1,6 @@
 package com.example.taskmaster.model;
 
+import com.amplifyframework.datastore.generated.model.Task;
 import com.amplifyframework.util.Immutable;
 import com.amplifyframework.core.model.Model;
 import com.amplifyframework.core.model.ModelProvider;

@@ -1,11 +1,88 @@
 # this is an auto generated file. This will be overwritten
+subscription OnCreateTaskOwner($filter: ModelSubscriptionTaskOwnerFilterInput) {
+  onCreateTaskOwner(filter: $filter) {
+    id
+    name
+    email
+    tasks {
+      items {
+        id
+        name
+        taskOwnerId
+        description
+        dateCreated
+        taskCategory
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateTaskOwner($filter: ModelSubscriptionTaskOwnerFilterInput) {
+  onUpdateTaskOwner(filter: $filter) {
+    id
+    name
+    email
+    tasks {
+      items {
+        id
+        name
+        taskOwnerId
+        description
+        dateCreated
+        taskCategory
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteTaskOwner($filter: ModelSubscriptionTaskOwnerFilterInput) {
+  onDeleteTaskOwner(filter: $filter) {
+    id
+    name
+    email
+    tasks {
+      items {
+        id
+        name
+        taskOwnerId
+        description
+        dateCreated
+        taskCategory
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
 subscription OnCreateTask($filter: ModelSubscriptionTaskFilterInput) {
   onCreateTask(filter: $filter) {
     id
     name
+    taskOwnerId
     description
     dateCreated
     taskCategory
+    taskOwner {
+      id
+      name
+      email
+      tasks {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
     createdAt
     updatedAt
   }
@@ -14,9 +91,20 @@ subscription OnUpdateTask($filter: ModelSubscriptionTaskFilterInput) {
   onUpdateTask(filter: $filter) {
     id
     name
+    taskOwnerId
     description
     dateCreated
     taskCategory
+    taskOwner {
+      id
+      name
+      email
+      tasks {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
     createdAt
     updatedAt
   }
@@ -25,9 +113,20 @@ subscription OnDeleteTask($filter: ModelSubscriptionTaskFilterInput) {
   onDeleteTask(filter: $filter) {
     id
     name
+    taskOwnerId
     description
     dateCreated
     taskCategory
+    taskOwner {
+      id
+      name
+      email
+      tasks {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
     createdAt
     updatedAt
   }
