@@ -73,6 +73,9 @@ public class SettingsActivity extends AppCompatActivity {
         String userName = preferences.getString(USER_NICKNAME_TAG, "");
         ((EditText) findViewById(R.id.userNameActivityEditText)).setText(userName);
     }
+
+    public void saveSelectedTaskOwner(){}
+
     public void setUpSaveButton(SharedPreferences preferences){
         Button saveButton = findViewById(R.id.userSettingsSaveButton);
         saveButton.setOnClickListener(v -> {
