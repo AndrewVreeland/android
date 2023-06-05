@@ -1,5 +1,5 @@
 # this is an auto generated file. This will be overwritten
-<<<<<<< HEAD
+
 mutation CreateTaskOwner(
   $input: CreateTaskOwnerInput!
   $condition: ModelTaskOwnerConditionInput
@@ -96,21 +96,12 @@ mutation CreateTask(
       createdAt
       updatedAt
     }
-=======
-mutation CreateTodo(
-  $input: CreateTodoInput!
-  $condition: ModelTodoConditionInput
-) {
-  createTodo(input: $input, condition: $condition) {
-    id
-    name
-    description
->>>>>>> db648835a8f860603e4b6f273a0c7b2c7ee8b914
+
     createdAt
     updatedAt
   }
 }
-<<<<<<< HEAD
+
 mutation UpdateTask(
   $input: UpdateTaskInput!
   $condition: ModelTaskConditionInput
@@ -132,21 +123,12 @@ mutation UpdateTask(
       createdAt
       updatedAt
     }
-=======
-mutation UpdateTodo(
-  $input: UpdateTodoInput!
-  $condition: ModelTodoConditionInput
-) {
-  updateTodo(input: $input, condition: $condition) {
-    id
-    name
-    description
->>>>>>> db648835a8f860603e4b6f273a0c7b2c7ee8b914
+
     createdAt
     updatedAt
   }
 }
-<<<<<<< HEAD
+
 mutation DeleteTask(
   $input: DeleteTaskInput!
   $condition: ModelTaskConditionInput
@@ -168,16 +150,7 @@ mutation DeleteTask(
       createdAt
       updatedAt
     }
-=======
-mutation DeleteTodo(
-  $input: DeleteTodoInput!
-  $condition: ModelTodoConditionInput
-) {
-  deleteTodo(input: $input, condition: $condition) {
-    id
-    name
-    description
->>>>>>> db648835a8f860603e4b6f273a0c7b2c7ee8b914
+
     createdAt
     updatedAt
   }

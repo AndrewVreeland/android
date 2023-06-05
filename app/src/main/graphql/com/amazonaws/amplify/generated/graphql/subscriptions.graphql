@@ -1,5 +1,5 @@
 # this is an auto generated file. This will be overwritten
-<<<<<<< HEAD
+
 subscription OnCreateTaskOwner($filter: ModelSubscriptionTaskOwnerFilterInput) {
   onCreateTaskOwner(filter: $filter) {
     id
@@ -84,18 +84,12 @@ subscription OnCreateTask($filter: ModelSubscriptionTaskFilterInput) {
       createdAt
       updatedAt
     }
-=======
-subscription OnCreateTodo($filter: ModelSubscriptionTodoFilterInput) {
-  onCreateTodo(filter: $filter) {
-    id
-    name
-    description
->>>>>>> db648835a8f860603e4b6f273a0c7b2c7ee8b914
+
     createdAt
     updatedAt
   }
 }
-<<<<<<< HEAD
+
 subscription OnUpdateTask($filter: ModelSubscriptionTaskFilterInput) {
   onUpdateTask(filter: $filter) {
     id
@@ -114,18 +108,12 @@ subscription OnUpdateTask($filter: ModelSubscriptionTaskFilterInput) {
       createdAt
       updatedAt
     }
-=======
-subscription OnUpdateTodo($filter: ModelSubscriptionTodoFilterInput) {
-  onUpdateTodo(filter: $filter) {
-    id
-    name
-    description
->>>>>>> db648835a8f860603e4b6f273a0c7b2c7ee8b914
+
     createdAt
     updatedAt
   }
 }
-<<<<<<< HEAD
+
 subscription OnDeleteTask($filter: ModelSubscriptionTaskFilterInput) {
   onDeleteTask(filter: $filter) {
     id
@@ -144,13 +132,7 @@ subscription OnDeleteTask($filter: ModelSubscriptionTaskFilterInput) {
       createdAt
       updatedAt
     }
-=======
-subscription OnDeleteTodo($filter: ModelSubscriptionTodoFilterInput) {
-  onDeleteTodo(filter: $filter) {
-    id
-    name
-    description
->>>>>>> db648835a8f860603e4b6f273a0c7b2c7ee8b914
+
     createdAt
     updatedAt
   }
