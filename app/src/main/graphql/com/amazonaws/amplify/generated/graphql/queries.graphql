@@ -1,4 +1,5 @@
 # this is an auto generated file. This will be overwritten
+<<<<<<< HEAD
 query GetTaskOwner($id: ID!) {
   getTaskOwner(id: $id) {
     id
@@ -58,10 +59,18 @@ query GetTask($id: ID!) {
       createdAt
       updatedAt
     }
+=======
+query GetTodo($id: ID!) {
+  getTodo(id: $id) {
+    id
+    name
+    description
+>>>>>>> db648835a8f860603e4b6f273a0c7b2c7ee8b914
     createdAt
     updatedAt
   }
 }
+<<<<<<< HEAD
 query ListTasks(
   $filter: ModelTaskFilterInput
   $limit: Int
@@ -118,6 +127,18 @@ query TasksByTaskOwnerIdAndName(
         createdAt
         updatedAt
       }
+=======
+query ListTodos(
+  $filter: ModelTodoFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listTodos(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      description
+>>>>>>> db648835a8f860603e4b6f273a0c7b2c7ee8b914
       createdAt
       updatedAt
     }

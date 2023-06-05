@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences preferences;
 
 
+
     public static final String DATABASE_NAME = "tasks_database";
     List<Task> tasks;
     TaskListRecyclerViewAdapter adapter;

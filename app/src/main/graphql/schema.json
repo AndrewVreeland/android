@@ -134,7 +134,9 @@
             },
             {
                 "kind": "OBJECT",
+
                 "name": "TaskOwner",
+
                 "description": null,
                 "specifiedByUrl": null,
                 "fields": [
@@ -171,7 +173,9 @@
                         "deprecationReason": null
                     },
                     {
+
                         "name": "email",
+
                         "description": null,
                         "args": [],
                         "type": {
@@ -183,6 +187,7 @@
                         "deprecationReason": null
                     },
                     {
+
                         "name": "tasks",
                         "description": null,
                         "args": [
@@ -256,6 +261,7 @@
                         "deprecationReason": null
                     },
                     {
+
                         "name": "createdAt",
                         "description": null,
                         "args": [],
@@ -316,6 +322,7 @@
                 "possibleTypes": null
             },
             {
+
                 "kind": "SCALAR",
                 "name": "Int",
                 "description": "The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.",
@@ -503,6 +510,7 @@
                 "possibleTypes": null
             },
             {
+
                 "kind": "INPUT_OBJECT",
                 "name": "ModelStringInput",
                 "description": null,
@@ -810,6 +818,7 @@
                 "possibleTypes": null
             },
             {
+
                 "kind": "INPUT_OBJECT",
                 "name": "ModelFloatInput",
                 "description": null,
@@ -2010,7 +2019,9 @@
             },
             {
                 "kind": "OBJECT",
+
                 "name": "ModelTaskOwnerConnection",
+
                 "description": null,
                 "specifiedByUrl": null,
                 "fields": [
@@ -2026,7 +2037,9 @@
                                 "name": null,
                                 "ofType": {
                                     "kind": "OBJECT",
+
                                     "name": "TaskOwner",
+
                                     "ofType": null
                                 }
                             }
@@ -2054,7 +2067,9 @@
             },
             {
                 "kind": "INPUT_OBJECT",
+
                 "name": "ModelTaskOwnerFilterInput",
+
                 "description": null,
                 "specifiedByUrl": null,
                 "fields": null,
@@ -2084,7 +2099,9 @@
                         "deprecationReason": null
                     },
                     {
+
                         "name": "email",
+
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -2103,7 +2120,9 @@
                             "name": null,
                             "ofType": {
                                 "kind": "INPUT_OBJECT",
+
                                 "name": "ModelTaskOwnerFilterInput",
+
                                 "ofType": null
                             }
                         },
@@ -2119,7 +2138,9 @@
                             "name": null,
                             "ofType": {
                                 "kind": "INPUT_OBJECT",
+
                                 "name": "ModelTaskOwnerFilterInput",
+
                                 "ofType": null
                             }
                         },
@@ -2132,7 +2153,9 @@
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
+
                             "name": "ModelTaskOwnerFilterInput",
+
                             "ofType": null
                         },
                         "defaultValue": null,
@@ -2151,7 +2174,9 @@
                 "specifiedByUrl": null,
                 "fields": [
                     {
+
                         "name": "getTaskOwner",
+
                         "description": null,
                         "args": [
                             {
@@ -2173,14 +2198,18 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
+
                             "name": "TaskOwner",
+
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
+
                         "name": "listTaskOwners",
+
                         "description": null,
                         "args": [
                             {
@@ -2188,7 +2217,9 @@
                                 "description": null,
                                 "type": {
                                     "kind": "INPUT_OBJECT",
+
                                     "name": "ModelTaskOwnerFilterInput",
+
                                     "ofType": null
                                 },
                                 "defaultValue": null,
@@ -2222,6 +2253,7 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
+
                             "name": "ModelTaskOwnerConnection",
                             "ofType": null
                         },
@@ -2390,6 +2422,7 @@
                         "type": {
                             "kind": "OBJECT",
                             "name": "ModelTaskConnection",
+
                             "ofType": null
                         },
                         "isDeprecated": false,
@@ -2403,7 +2436,9 @@
             },
             {
                 "kind": "INPUT_OBJECT",
+
                 "name": "ModelTaskOwnerConditionInput",
+
                 "description": null,
                 "specifiedByUrl": null,
                 "fields": null,
@@ -2421,7 +2456,9 @@
                         "deprecationReason": null
                     },
                     {
+
                         "name": "email",
+
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -2440,7 +2477,9 @@
                             "name": null,
                             "ofType": {
                                 "kind": "INPUT_OBJECT",
+
                                 "name": "ModelTaskOwnerConditionInput",
+
                                 "ofType": null
                             }
                         },
@@ -2456,7 +2495,9 @@
                             "name": null,
                             "ofType": {
                                 "kind": "INPUT_OBJECT",
+
                                 "name": "ModelTaskOwnerConditionInput",
+
                                 "ofType": null
                             }
                         },
@@ -2469,7 +2510,9 @@
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
+
                             "name": "ModelTaskOwnerConditionInput",
+
                             "ofType": null
                         },
                         "defaultValue": null,
@@ -2483,7 +2526,9 @@
             },
             {
                 "kind": "INPUT_OBJECT",
+
                 "name": "CreateTaskOwnerInput",
+
                 "description": null,
                 "specifiedByUrl": null,
                 "fields": null,
@@ -2517,7 +2562,9 @@
                         "deprecationReason": null
                     },
                     {
+
                         "name": "email",
+
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -2535,7 +2582,9 @@
             },
             {
                 "kind": "INPUT_OBJECT",
+
                 "name": "UpdateTaskOwnerInput",
+
                 "description": null,
                 "specifiedByUrl": null,
                 "fields": null,
@@ -2569,7 +2618,9 @@
                         "deprecationReason": null
                     },
                     {
+
                         "name": "email",
+
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -2587,7 +2638,9 @@
             },
             {
                 "kind": "INPUT_OBJECT",
+
                 "name": "DeleteTaskOwnerInput",
+
                 "description": null,
                 "specifiedByUrl": null,
                 "fields": null,
@@ -2620,7 +2673,9 @@
                 "specifiedByUrl": null,
                 "fields": [
                     {
+
                         "name": "createTaskOwner",
+
                         "description": null,
                         "args": [
                             {
@@ -2631,7 +2686,9 @@
                                     "name": null,
                                     "ofType": {
                                         "kind": "INPUT_OBJECT",
+
                                         "name": "CreateTaskOwnerInput",
+
                                         "ofType": null
                                     }
                                 },
@@ -2644,7 +2701,9 @@
                                 "description": null,
                                 "type": {
                                     "kind": "INPUT_OBJECT",
+
                                     "name": "ModelTaskOwnerConditionInput",
+
                                     "ofType": null
                                 },
                                 "defaultValue": null,
@@ -2654,14 +2713,18 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
+
                             "name": "TaskOwner",
+
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
+
                         "name": "updateTaskOwner",
+
                         "description": null,
                         "args": [
                             {
@@ -2672,7 +2735,9 @@
                                     "name": null,
                                     "ofType": {
                                         "kind": "INPUT_OBJECT",
+
                                         "name": "UpdateTaskOwnerInput",
+
                                         "ofType": null
                                     }
                                 },
@@ -2685,7 +2750,9 @@
                                 "description": null,
                                 "type": {
                                     "kind": "INPUT_OBJECT",
+
                                     "name": "ModelTaskOwnerConditionInput",
+
                                     "ofType": null
                                 },
                                 "defaultValue": null,
@@ -2695,14 +2762,18 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
+
                             "name": "TaskOwner",
+
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
+
                         "name": "deleteTaskOwner",
+
                         "description": null,
                         "args": [
                             {
@@ -2713,7 +2784,9 @@
                                     "name": null,
                                     "ofType": {
                                         "kind": "INPUT_OBJECT",
+
                                         "name": "DeleteTaskOwnerInput",
+
                                         "ofType": null
                                     }
                                 },
@@ -2726,7 +2799,9 @@
                                 "description": null,
                                 "type": {
                                     "kind": "INPUT_OBJECT",
+
                                     "name": "ModelTaskOwnerConditionInput",
+
                                     "ofType": null
                                 },
                                 "defaultValue": null,
@@ -2736,6 +2811,7 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
+
                             "name": "TaskOwner",
                             "ofType": null
                         },
@@ -2860,6 +2936,7 @@
                         "type": {
                             "kind": "OBJECT",
                             "name": "Task",
+
                             "ofType": null
                         },
                         "isDeprecated": false,
@@ -2873,7 +2950,9 @@
             },
             {
                 "kind": "INPUT_OBJECT",
+
                 "name": "ModelSubscriptionTaskOwnerFilterInput",
+
                 "description": null,
                 "specifiedByUrl": null,
                 "fields": null,
@@ -2903,7 +2982,9 @@
                         "deprecationReason": null
                     },
                     {
+
                         "name": "email",
+
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -2922,7 +3003,9 @@
                             "name": null,
                             "ofType": {
                                 "kind": "INPUT_OBJECT",
+
                                 "name": "ModelSubscriptionTaskOwnerFilterInput",
+
                                 "ofType": null
                             }
                         },
@@ -2938,7 +3021,9 @@
                             "name": null,
                             "ofType": {
                                 "kind": "INPUT_OBJECT",
+
                                 "name": "ModelSubscriptionTaskOwnerFilterInput",
+
                                 "ofType": null
                             }
                         },
@@ -2958,7 +3043,9 @@
                 "specifiedByUrl": null,
                 "fields": [
                     {
+
                         "name": "onCreateTaskOwner",
+
                         "description": null,
                         "args": [
                             {
@@ -2966,7 +3053,9 @@
                                 "description": null,
                                 "type": {
                                     "kind": "INPUT_OBJECT",
+
                                     "name": "ModelSubscriptionTaskOwnerFilterInput",
+
                                     "ofType": null
                                 },
                                 "defaultValue": null,
@@ -2976,14 +3065,18 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
+
                             "name": "TaskOwner",
+
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
+
                         "name": "onUpdateTaskOwner",
+
                         "description": null,
                         "args": [
                             {
@@ -2991,7 +3084,9 @@
                                 "description": null,
                                 "type": {
                                     "kind": "INPUT_OBJECT",
+
                                     "name": "ModelSubscriptionTaskOwnerFilterInput",
+
                                     "ofType": null
                                 },
                                 "defaultValue": null,
@@ -3001,14 +3096,18 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
+
                             "name": "TaskOwner",
+
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
+
                         "name": "onDeleteTaskOwner",
+
                         "description": null,
                         "args": [
                             {
@@ -3016,7 +3115,9 @@
                                 "description": null,
                                 "type": {
                                     "kind": "INPUT_OBJECT",
+
                                     "name": "ModelSubscriptionTaskOwnerFilterInput",
+
                                     "ofType": null
                                 },
                                 "defaultValue": null,
@@ -3026,6 +3127,7 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
+
                             "name": "TaskOwner",
                             "ofType": null
                         },
@@ -3102,6 +3204,7 @@
                         "type": {
                             "kind": "OBJECT",
                             "name": "Task",
+
                             "ofType": null
                         },
                         "isDeprecated": false,
@@ -3115,6 +3218,7 @@
             },
             {
                 "kind": "OBJECT",
+
                 "name": "ModelTaskConnection",
                 "description": null,
                 "specifiedByUrl": null,
@@ -3863,6 +3967,7 @@
             },
             {
                 "kind": "OBJECT",
+
                 "name": "__Schema",
                 "description": "A GraphQL Schema defines the capabilities of a GraphQL server. It exposes all available types and directives on the server, as well as the entry points for query, mutation, and subscription operations.",
                 "specifiedByUrl": null,
