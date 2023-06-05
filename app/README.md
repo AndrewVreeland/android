@@ -37,3 +37,9 @@ added three espresso tests
 ## Lab 31
 added amplify to application, data is now stored via AWS Dynamo DB. We have the date posted via DynamoDB status. 
 ![Home Screen](../images/lab31/lab31homescreen.png)
+
+## Lab 33
+added many to one relationship
+added expresso test for new functionality. 
+![Add Task page](../images/lab33/AddTaskScreenshot.png)
+![Settings page](../images/lab33/settingsscreenshot.png)
