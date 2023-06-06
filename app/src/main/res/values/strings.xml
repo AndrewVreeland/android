@@ -25,5 +25,9 @@
     <string name="task_description2">Task Description</string>
     <string name="my_task">My Task</string>
     <string name="add_task3">Add Task</string>
+    <string name="name" />
+    <string name="nickname" />
+    <string name="Save" />
+
 
 </resources>

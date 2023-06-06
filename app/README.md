@@ -43,3 +43,9 @@ added many to one relationship
 added expresso test for new functionality. 
 ![Add Task page](../images/lab33/AddTaskScreenshot.png)
 ![Settings page](../images/lab33/settingsscreenshot.png)
+
+## lab 34
+unable to finish todays lab because google has to verify my identity first. screenshot to show all other errors are gone. 
+![googleplay](../images/lab34/GoogleplayScreenshor.png)
+![phone screenshot1](../images/lab34/Screenshot_20230606_005137.png)
+![phone screen shot2](../images/lab34/Screenshot_20230606_005202.png)
