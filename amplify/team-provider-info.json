@@ -1,7 +1,6 @@
 {
   "dev": {
     "awscloudformation": {
-
       "AuthRoleName": "amplify-taskmastermain-dev-101050-authRole",
       "UnauthRoleArn": "arn:aws:iam::612998444197:role/amplify-taskmastermain-dev-101050-unauthRole",
       "AuthRoleArn": "arn:aws:iam::612998444197:role/amplify-taskmastermain-dev-101050-authRole",
@@ -15,7 +14,9 @@
     "categories": {
       "api": {
         "taskmastermain": {}
-
+      },
+      "auth": {
+        "taskmastermain0b12e7a6": {}
       }
     }
   }

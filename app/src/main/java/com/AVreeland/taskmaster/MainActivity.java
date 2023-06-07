@@ -5,7 +5,7 @@ import static android.content.ContentValues.TAG;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
+import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -18,6 +18,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.amplifyframework.api.graphql.model.ModelQuery;
+import com.amplifyframework.auth.AuthUserAttributeKey;
+import com.amplifyframework.auth.cognito.result.AWSCognitoAuthSignOutResult;
+import com.amplifyframework.auth.options.AuthSignOutOptions;
+import com.amplifyframework.auth.options.AuthSignUpOptions;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Task;
 import com.AVreeland.taskmaster.activities.AddTaskActivity;
@@ -47,6 +51,52 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tasks = new ArrayList<>();
+
+//        Amplify.Auth.signUp("andrewvreeland@gmail.com", "12345678",
+//                AuthSignUpOptions.builder()
+//                                .userAttribute(AuthUserAttributeKey.email(), "andrewvreeland@gmail.com")
+//                                        .userAttribute(AuthUserAttributeKey.nickname(), "Andrew")
+//                                                .build(),
+//        good -> {
+//            Log.i(TAG, "Signup succeeded:" + good.toString());
+//        },
+//                bad -> {
+//            Log.i(TAG, "Signup failed:" + bad.toString());
+//                }
+//        );
+//Amplify.Auth.confirmSignUp("andrewvreeland@gmail.com", "700572",
+//        success ->{
+//    Log.i (TAG, "Verification success! " + success.toString());
+//},
+//        failure -> {Log.i(TAG, "verification failed: " +failure.toString());
+//}
+//        );
+
+        // for login button
+
+        Amplify.Auth.signIn("andrewvreeland@gmail.com", "12345678",
+                success -> {
+            Log.i(TAG, "login succeeded " + success.toString());
+                },
+                failure -> {
+            Log.i(TAG, "login failed " + failure.toString());
+                });
+
+        // for logout button
+
+      AuthSignOutOptions options = AuthSignOutOptions.builder()
+                      .globalSignOut(true)
+                              .build();
+
+      Amplify.Auth.signOut(options, signOutResult ->{
+          if(signOutResult instanceof AWSCognitoAuthSignOutResult.CompleteSignOut){
+                Log.i(TAG, "signout successful");
+          } else if (signOutResult instanceof  AWSCognitoAuthSignOutResult.PartialSignOut) {
+              Log.i(TAG, "signout successful");
+          } else if(signOutResult instanceof AWSCognitoAuthSignOutResult.FailedSignOut){
+              Log.i(TAG, "signout FAILED" + signOutResult.toString());
+          }
+      });
 
         setUpSettingsButton();
         setUpRecyclerView();

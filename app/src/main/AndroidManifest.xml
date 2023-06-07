@@ -14,18 +14,30 @@
         android:theme="@style/Theme.TaskMaster"
         tools:targetApi="31">
         <activity
-            android:name="com.AVreeland.taskmaster.activities.TaskDetailActivity"
+            android:name=".VerifyAccountActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VerifyAcccountActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TaskDetailActivity"
             android:exported="false"
             android:label="@string/title_activity_task_detail"
             android:theme="@style/Theme.TaskMaster.NoActionBar" />
         <activity
-            android:name="com.AVreeland.taskmaster.activities.SettingsActivity"
+            android:name=".SettingsActivity"
             android:exported="false" />
         <activity
-            android:name="com.AVreeland.taskmaster.activities.AllTasksActivity"
+            android:name=".AllTasksActivity"
             android:exported="false" />
         <activity
-            android:name="com.AVreeland.taskmaster.activities.AddTaskActivity"
+            android:name=".AddTaskActivity"
             android:exported="false" />
         <activity
             android:name="com.AVreeland.taskmaster.MainActivity"

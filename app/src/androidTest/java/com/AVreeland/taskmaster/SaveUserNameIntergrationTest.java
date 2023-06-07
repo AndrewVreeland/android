@@ -79,7 +79,7 @@ public class SaveUserNameIntergrationTest {
         appCompatEditText.perform(replaceText("andrew"), closeSoftKeyboard());
 
         ViewInteraction materialButton = onView(
-                allOf(withId(R.id.userSettingsSaveButton), withText("Save"),
+                allOf(withId(R.id.userSettingsLoginButton), withText("Save"),
                         childAtPosition(
                                 allOf(withId(R.id.userSettingsActivity),
                                         childAtPosition(

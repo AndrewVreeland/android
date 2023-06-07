@@ -7,6 +7,31 @@
     android:layout_height="match_parent"
     tools:context=".activities.SettingsActivity">
 
+    <Button
+        android:id="@+id/userSettingsSaveButton2"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:contentDescription="@string/Save"
+        android:text="save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userNameActivityEditText"
+        app:layout_constraintVertical_bias="0.249" />
+
+    <Button
+        android:id="@+id/userSettingsLogoutButton"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="136dp"
+        android:contentDescription="Logout"
+        android:text="Logout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.589"
+        app:layout_constraintStart_toEndOf="@+id/userSettingsLoginButton" />
+
     <EditText
         android:id="@+id/userNameActivityEditText"
         android:layout_width="wrap_content"
@@ -39,17 +64,16 @@
         app:layout_constraintVertical_bias="0.112" />
 
     <Button
-        android:id="@+id/userSettingsSaveButton"
+        android:id="@+id/userSettingsLoginButton"
         android:layout_width="120dp"
         android:layout_height="60dp"
+        android:layout_marginBottom="136dp"
         android:contentDescription="@string/Save"
-        android:text="save"
+        android:text="Login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.326"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userNameActivityEditText"
-        app:layout_constraintVertical_bias="0.253" />
+        app:layout_constraintHorizontal_bias="0.185"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Spinner
         android:id="@+id/settingsTaskOwnerSpinner"
@@ -57,10 +81,9 @@
         android:layout_height="62dp"
         android:layout_marginTop="40dp"
         android:contentDescription="spinner"
-        app:layout_constraintBottom_toTopOf="@+id/userSettingsSaveButton"
+        app:layout_constraintBottom_toTopOf="@+id/userSettingsLoginButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.396"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userNameActivityEditText"
-        app:layout_constraintVertical_bias="0.263" />
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
