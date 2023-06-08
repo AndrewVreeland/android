@@ -61,3 +61,5 @@ fixed the lab implemented the login logout functionality.
 ![](../images/lab35/Sign_up_page.png)
 
 ## Lab 36
+added the ability to add photos to new tasks! struggled implementing the viewing of the photos
+![](../images/lab36/addTask.png)
