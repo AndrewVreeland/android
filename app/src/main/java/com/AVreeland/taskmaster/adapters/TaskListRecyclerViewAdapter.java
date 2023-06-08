@@ -97,6 +97,7 @@ public static class TaskListViewHolder extends RecyclerView.ViewHolder {
             Intent goToTaskDetailsIntent= new Intent (callingActivity, TaskDetailActivity.class);
             goToTaskDetailsIntent.putExtra(MainActivity.USER_TASK_TAG, taskName);
             goToTaskDetailsIntent.putExtra(MainActivity.USER_TASK_BODY_TAG, taskBody);
+
             callingActivity.startActivity(goToTaskDetailsIntent);
         });
     }
@@ -110,6 +111,8 @@ public static class TaskListViewHolder extends RecyclerView.ViewHolder {
         return tasks.size();
     }
 
+private void displayTaskImage(){
 
+}
 
 }

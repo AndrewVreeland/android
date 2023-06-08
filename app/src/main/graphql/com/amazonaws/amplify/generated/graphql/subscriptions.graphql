@@ -1,5 +1,4 @@
 # this is an auto generated file. This will be overwritten
-
 subscription OnCreateTaskOwner($filter: ModelSubscriptionTaskOwnerFilterInput) {
   onCreateTaskOwner(filter: $filter) {
     id
@@ -13,6 +12,7 @@ subscription OnCreateTaskOwner($filter: ModelSubscriptionTaskOwnerFilterInput) {
         description
         dateCreated
         taskCategory
+        s3Key
         createdAt
         updatedAt
       }
@@ -35,6 +35,7 @@ subscription OnUpdateTaskOwner($filter: ModelSubscriptionTaskOwnerFilterInput) {
         description
         dateCreated
         taskCategory
+        s3Key
         createdAt
         updatedAt
       }
@@ -57,6 +58,7 @@ subscription OnDeleteTaskOwner($filter: ModelSubscriptionTaskOwnerFilterInput) {
         description
         dateCreated
         taskCategory
+        s3Key
         createdAt
         updatedAt
       }
@@ -84,12 +86,11 @@ subscription OnCreateTask($filter: ModelSubscriptionTaskFilterInput) {
       createdAt
       updatedAt
     }
-
+    s3Key
     createdAt
     updatedAt
   }
 }
-
 subscription OnUpdateTask($filter: ModelSubscriptionTaskFilterInput) {
   onUpdateTask(filter: $filter) {
     id
@@ -108,12 +109,11 @@ subscription OnUpdateTask($filter: ModelSubscriptionTaskFilterInput) {
       createdAt
       updatedAt
     }
-
+    s3Key
     createdAt
     updatedAt
   }
 }
-
 subscription OnDeleteTask($filter: ModelSubscriptionTaskFilterInput) {
   onDeleteTask(filter: $filter) {
     id
@@ -132,7 +132,7 @@ subscription OnDeleteTask($filter: ModelSubscriptionTaskFilterInput) {
       createdAt
       updatedAt
     }
-
+    s3Key
     createdAt
     updatedAt
   }

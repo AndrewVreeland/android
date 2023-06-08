@@ -18,6 +18,7 @@ description: String
 dateCreated: AWSDateTime
 taskCategory: TaskCategoryEnum
 taskOwner: TaskOwner @belongsTo(fields: ["taskOwnerId"])
+s3Key: String
 }
 
 enum TaskCategoryEnum{

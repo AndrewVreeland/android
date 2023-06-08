@@ -31,6 +31,9 @@ import com.AVreeland.taskmaster.adapters.TaskListRecyclerViewAdapter;
 import com.AVreeland.taskmaster.R;
 
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,56 +55,31 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         tasks = new ArrayList<>();
 
-//        Amplify.Auth.signUp("andrewvreeland@gmail.com", "12345678",
-//                AuthSignUpOptions.builder()
-//                                .userAttribute(AuthUserAttributeKey.email(), "andrewvreeland@gmail.com")
-//                                        .userAttribute(AuthUserAttributeKey.nickname(), "Andrew")
-//                                                .build(),
-//        good -> {
-//            Log.i(TAG, "Signup succeeded:" + good.toString());
-//        },
-//                bad -> {
-//            Log.i(TAG, "Signup failed:" + bad.toString());
-//                }
-//        );
-//Amplify.Auth.confirmSignUp("andrewvreeland@gmail.com", "700572",
-//        success ->{
-//    Log.i (TAG, "Verification success! " + success.toString());
-//},
-//        failure -> {Log.i(TAG, "verification failed: " +failure.toString());
-//}
-//        );
-
-        // for login button
-
-        Amplify.Auth.signIn("andrewvreeland@gmail.com", "12345678",
-                success -> {
-            Log.i(TAG, "login succeeded " + success.toString());
-                },
-                failure -> {
-            Log.i(TAG, "login failed " + failure.toString());
-                });
-
-        // for logout button
-
-      AuthSignOutOptions options = AuthSignOutOptions.builder()
-                      .globalSignOut(true)
-                              .build();
-
-      Amplify.Auth.signOut(options, signOutResult ->{
-          if(signOutResult instanceof AWSCognitoAuthSignOutResult.CompleteSignOut){
-                Log.i(TAG, "signout successful");
-          } else if (signOutResult instanceof  AWSCognitoAuthSignOutResult.PartialSignOut) {
-              Log.i(TAG, "signout successful");
-          } else if(signOutResult instanceof AWSCognitoAuthSignOutResult.FailedSignOut){
-              Log.i(TAG, "signout FAILED" + signOutResult.toString());
-          }
-      });
 
         setUpSettingsButton();
         setUpRecyclerView();
         addTaskButton();
         viewAllTasksButton();
+        uploadFile();
+    }
+
+    private void uploadFile() {
+        File exampleFile = new File(getApplicationContext().getFilesDir(), "ExampleKey");
+
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(exampleFile));
+            writer.append("Example file contents");
+            writer.close();
+        } catch (Exception exception) {
+            Log.e("MyAmplifyApp", "Upload failed", exception);
+        }
+
+        Amplify.Storage.uploadFile(
+                "ExampleKey",
+                exampleFile,
+                result -> Log.i("MyAmplifyApp", "Successfully created file: " + result.getKey()),
+                storageFailure -> Log.e("MyAmplifyApp", "file creation failed", storageFailure)
+        );
     }
 
 

@@ -41,7 +41,7 @@ public class SignUpActivity extends AppCompatActivity {
                     good -> {
                         Log.i(TAG, "Signup succeeded: " + good.toString());
                         // move to the verify account activity and pass the email as an intent extra
-                        Intent goToVerificationIntent = new Intent(SignUpActivity.this, VerifyAccountActivity.class);
+                        Intent goToVerificationIntent = new Intent(SignUpActivity.this, VerifyAccountsActivity.class);
                         goToVerificationIntent.putExtra(SIGN_UP_EMAIL_TAG, userEmail);
                         startActivity(goToVerificationIntent);
                     },

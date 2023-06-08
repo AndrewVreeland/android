@@ -26,13 +26,13 @@ public class LoginActivity extends AppCompatActivity {
 
     public void setUpLoginButton() {
         Intent callingIntent = getIntent();
-        String userEmail = callingIntent.getStringExtra(VerifyAccountActivity.VERIFICATION_EMAIL_TAG);
+        String userEmail = callingIntent.getStringExtra(VerifyAccountsActivity.VERIFICATION_EMAIL_TAG);
         EditText userEmailEditText = findViewById(R.id.loginActivityUsernameEditText);
         if(userEmail != null) {
             userEmailEditText.setText(userEmail);
         }
         EditText userPasswordEditText = findViewById(R.id.loginActivityPasswordEditText);
-        Button loginButton = findViewById(R.id.loginActivitySignUpButton);
+        Button loginButton = findViewById(R.id.loginActivityLoginButton2);
 
         loginButton.setOnClickListener(v -> {
             // Amplify User Login code block
@@ -50,9 +50,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void setUpSignUpButton() {
-        Button signUpButon = findViewById(R.id.loginActivitySignUpButton);
+        Button signUpButton = findViewById(R.id.loginActivitySignUpButton);
 
-        signUpButon.setOnClickListener(v -> {
+        signUpButton.setOnClickListener(v -> {
             Intent goToSignUpActivity = new Intent(LoginActivity.this, SignUpActivity.class);
             startActivity(goToSignUpActivity);
         });

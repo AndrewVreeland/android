@@ -179,6 +179,8 @@ public final class Task implements Model {
     BuildStep dateCreated(Temporal.DateTime dateCreated);
     BuildStep taskCategory(TaskCategoryEnum taskCategory);
     BuildStep taskOwner(TaskOwner taskOwner);
+
+      BuildStep s3Key(String s3Key);
   }
   
 
@@ -232,8 +234,13 @@ public final class Task implements Model {
         this.taskOwner = taskOwner;
         return this;
     }
-    
-    /**
+
+      @Override
+      public BuildStep s3Key(String s3Key) {
+          return null;
+      }
+
+      /**
      * @param id id
      * @return Current Builder instance, for fluent method chaining
      */

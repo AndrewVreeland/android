@@ -11,7 +11,7 @@ import android.widget.EditText;
 import com.AVreeland.taskmaster.R;
 import com.amplifyframework.core.Amplify;
 
-public class VerifyAccountActivity extends AppCompatActivity {
+public class VerifyAccountsActivity extends AppCompatActivity {
     public static final String TAG = "VerifyAccountActivity";
     public static final String VERIFICATION_EMAIL_TAG = "VERIFICATION_EMAIL_TAG";
 
@@ -28,7 +28,7 @@ public class VerifyAccountActivity extends AppCompatActivity {
         // need to grab email from calling intent
         Intent callingIntent = getIntent();
         String userEmail = callingIntent.getStringExtra(SignUpActivity.SIGN_UP_EMAIL_TAG);
-            EditText emailEditText = ((EditText) findViewById(R.id.verifyAccountActivityUsernameEditText1));
+        EditText emailEditText = ((EditText) findViewById(R.id.verifyAccountActivityUsernameEditText1));
         emailEditText.setText(userEmail);
 
         verificationButton.setOnClickListener(v -> {
@@ -39,7 +39,7 @@ public class VerifyAccountActivity extends AppCompatActivity {
                     success -> {
                         Log.i(TAG, "Verification succeeded: " + success.toString());
                         // make an intent to move to login page and pass the user's email
-                        Intent goToLoginActivity = new Intent(VerifyAccountActivity.this, LoginActivity.class);
+                        Intent goToLoginActivity = new Intent(VerifyAccountsActivity.this, LoginActivity.class);
                         goToLoginActivity.putExtra(VERIFICATION_EMAIL_TAG, userEmail);
                         startActivity(goToLoginActivity);
                     },
@@ -49,5 +49,4 @@ public class VerifyAccountActivity extends AppCompatActivity {
             );
         });
     }
-
 }

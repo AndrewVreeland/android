@@ -117,7 +117,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void setUpSaveButton(SharedPreferences preferences) {
-        Button saveButton = findViewById(R.id.userSettingsLoginButton);
+        Button saveButton = findViewById(R.id.userSettingsSaveButton2);
         saveButton.setOnClickListener(v -> {
 
             //creating an editor because SharedPreferences is read-only

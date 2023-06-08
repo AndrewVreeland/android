@@ -1,5 +1,4 @@
 # this is an auto generated file. This will be overwritten
-
 mutation CreateTaskOwner(
   $input: CreateTaskOwnerInput!
   $condition: ModelTaskOwnerConditionInput
@@ -16,6 +15,7 @@ mutation CreateTaskOwner(
         description
         dateCreated
         taskCategory
+        s3Key
         createdAt
         updatedAt
       }
@@ -41,6 +41,7 @@ mutation UpdateTaskOwner(
         description
         dateCreated
         taskCategory
+        s3Key
         createdAt
         updatedAt
       }
@@ -66,6 +67,7 @@ mutation DeleteTaskOwner(
         description
         dateCreated
         taskCategory
+        s3Key
         createdAt
         updatedAt
       }
@@ -96,12 +98,11 @@ mutation CreateTask(
       createdAt
       updatedAt
     }
-
+    s3Key
     createdAt
     updatedAt
   }
 }
-
 mutation UpdateTask(
   $input: UpdateTaskInput!
   $condition: ModelTaskConditionInput
@@ -123,12 +124,11 @@ mutation UpdateTask(
       createdAt
       updatedAt
     }
-
+    s3Key
     createdAt
     updatedAt
   }
 }
-
 mutation DeleteTask(
   $input: DeleteTaskInput!
   $condition: ModelTaskConditionInput
@@ -150,7 +150,7 @@ mutation DeleteTask(
       createdAt
       updatedAt
     }
-
+    s3Key
     createdAt
     updatedAt
   }

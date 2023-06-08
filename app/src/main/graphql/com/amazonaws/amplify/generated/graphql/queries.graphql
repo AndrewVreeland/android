@@ -1,5 +1,4 @@
 # this is an auto generated file. This will be overwritten
-
 query GetTaskOwner($id: ID!) {
   getTaskOwner(id: $id) {
     id
@@ -13,6 +12,7 @@ query GetTaskOwner($id: ID!) {
         description
         dateCreated
         taskCategory
+        s3Key
         createdAt
         updatedAt
       }
@@ -59,12 +59,11 @@ query GetTask($id: ID!) {
       createdAt
       updatedAt
     }
-
+    s3Key
     createdAt
     updatedAt
   }
 }
-
 query ListTasks(
   $filter: ModelTaskFilterInput
   $limit: Int
@@ -85,6 +84,7 @@ query ListTasks(
         createdAt
         updatedAt
       }
+      s3Key
       createdAt
       updatedAt
     }
@@ -121,7 +121,7 @@ query TasksByTaskOwnerIdAndName(
         createdAt
         updatedAt
       }
-
+      s3Key
       createdAt
       updatedAt
     }

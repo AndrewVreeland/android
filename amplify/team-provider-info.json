@@ -17,6 +17,9 @@
       },
       "auth": {
         "taskmastermain0b12e7a6": {}
+      },
+      "storage": {
+        "taskMaster": {}
       }
     }
   }
