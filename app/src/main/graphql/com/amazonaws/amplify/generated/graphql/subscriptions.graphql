@@ -9,6 +9,8 @@ subscription OnCreateTaskOwner($filter: ModelSubscriptionTaskOwnerFilterInput) {
         id
         name
         taskOwnerId
+        currentLatitude
+        currentLongitude
         description
         dateCreated
         taskCategory
@@ -32,6 +34,8 @@ subscription OnUpdateTaskOwner($filter: ModelSubscriptionTaskOwnerFilterInput) {
         id
         name
         taskOwnerId
+        currentLatitude
+        currentLongitude
         description
         dateCreated
         taskCategory
@@ -55,6 +59,8 @@ subscription OnDeleteTaskOwner($filter: ModelSubscriptionTaskOwnerFilterInput) {
         id
         name
         taskOwnerId
+        currentLatitude
+        currentLongitude
         description
         dateCreated
         taskCategory
@@ -73,6 +79,8 @@ subscription OnCreateTask($filter: ModelSubscriptionTaskFilterInput) {
     id
     name
     taskOwnerId
+    currentLatitude
+    currentLongitude
     description
     dateCreated
     taskCategory
@@ -96,6 +104,8 @@ subscription OnUpdateTask($filter: ModelSubscriptionTaskFilterInput) {
     id
     name
     taskOwnerId
+    currentLatitude
+    currentLongitude
     description
     dateCreated
     taskCategory
@@ -119,6 +129,8 @@ subscription OnDeleteTask($filter: ModelSubscriptionTaskFilterInput) {
     id
     name
     taskOwnerId
+    currentLatitude
+    currentLongitude
     description
     dateCreated
     taskCategory

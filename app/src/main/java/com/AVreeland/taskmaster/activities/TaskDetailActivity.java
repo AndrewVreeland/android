@@ -8,9 +8,12 @@ import android.widget.TextView;
 
 import com.AVreeland.taskmaster.MainActivity;
 import com.AVreeland.taskmaster.R;
+import com.amplifyframework.api.graphql.model.ModelQuery;
+import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.Task;
 
 public class TaskDetailActivity extends AppCompatActivity {
-
+private String taskId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +25,6 @@ public class TaskDetailActivity extends AppCompatActivity {
     public void setUpTaskTitleName(){
         Intent callingIntent = getIntent();
         String taskTitleName = null;
-
 
         if(callingIntent != null){
             taskTitleName = callingIntent.getStringExtra(MainActivity.USER_TASK_TAG);
@@ -39,6 +41,7 @@ public class TaskDetailActivity extends AppCompatActivity {
     public void setUpTaskBodyContent(){
         Intent callingIntent = getIntent();
         String taskBodyContent = null;
+
 
         if(callingIntent != null){
             taskBodyContent = callingIntent.getStringExtra(MainActivity.USER_TASK_BODY_TAG);

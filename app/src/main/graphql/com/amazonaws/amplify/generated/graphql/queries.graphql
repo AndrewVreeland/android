@@ -9,6 +9,8 @@ query GetTaskOwner($id: ID!) {
         id
         name
         taskOwnerId
+        currentLatitude
+        currentLongitude
         description
         dateCreated
         taskCategory
@@ -46,6 +48,8 @@ query GetTask($id: ID!) {
     id
     name
     taskOwnerId
+    currentLatitude
+    currentLongitude
     description
     dateCreated
     taskCategory
@@ -74,6 +78,8 @@ query ListTasks(
       id
       name
       taskOwnerId
+      currentLatitude
+      currentLongitude
       description
       dateCreated
       taskCategory
@@ -111,6 +117,8 @@ query TasksByTaskOwnerIdAndName(
       id
       name
       taskOwnerId
+      currentLatitude
+      currentLongitude
       description
       dateCreated
       taskCategory

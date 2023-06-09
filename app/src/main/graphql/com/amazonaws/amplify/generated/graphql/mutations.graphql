@@ -12,6 +12,8 @@ mutation CreateTaskOwner(
         id
         name
         taskOwnerId
+        currentLatitude
+        currentLongitude
         description
         dateCreated
         taskCategory
@@ -38,6 +40,8 @@ mutation UpdateTaskOwner(
         id
         name
         taskOwnerId
+        currentLatitude
+        currentLongitude
         description
         dateCreated
         taskCategory
@@ -64,6 +68,8 @@ mutation DeleteTaskOwner(
         id
         name
         taskOwnerId
+        currentLatitude
+        currentLongitude
         description
         dateCreated
         taskCategory
@@ -85,6 +91,8 @@ mutation CreateTask(
     id
     name
     taskOwnerId
+    currentLatitude
+    currentLongitude
     description
     dateCreated
     taskCategory
@@ -111,6 +119,8 @@ mutation UpdateTask(
     id
     name
     taskOwnerId
+    currentLatitude
+    currentLongitude
     description
     dateCreated
     taskCategory
@@ -137,6 +147,8 @@ mutation DeleteTask(
     id
     name
     taskOwnerId
+    currentLatitude
+    currentLongitude
     description
     dateCreated
     taskCategory
