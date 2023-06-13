@@ -67,3 +67,7 @@ added the ability to add photos to new tasks! struggled implementing the viewing
 ## Lab 37
 added the ability to add lat and lon also finished previous lab. I am missing the displaying of the lat and lon currently
 ![database](../images/lab37/database.png)
+
+## Lab 41
+added the ability for text to speech as well as the translation of text
+![task description](../images/lab41/task_description.png)
