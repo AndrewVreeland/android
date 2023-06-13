@@ -36,10 +36,25 @@
         app:layout_constraintVertical_bias="0.266" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/task_detail_translated_text"
+        android:layout_width="193dp"
+        android:layout_height="66dp"
+        android:gravity="center"
         android:text="TextView"
-        tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="153dp" />
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/taskFormActivityAudioButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/task_detail_task_body" />
+
+    <Button
+        android:id="@+id/taskFormActivityAudioButton"
+        android:layout_width="125dp"
+        android:layout_height="48dp"
+        android:text="Audio"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/task_detail_task_body"
+        app:layout_constraintVertical_bias="0.739" />
 </androidx.constraintlayout.widget.ConstraintLayout>

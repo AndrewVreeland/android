@@ -5,6 +5,8 @@ import static android.content.ContentValues.TAG;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.amplifyframework.analytics.AnalyticsEvent;
 import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin;
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -35,6 +37,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -53,14 +56,25 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        AnalyticsEvent openAppEvent = AnalyticsEvent.builder()
+                .name("openedApp")
+                .addProperty("time", Long.toString(new Date().getTime()))
+                .addProperty("trackingEvent", "main activity opened")
+                .build();
+
+        Amplify.Analytics.recordEvent(openAppEvent);
+
+
         tasks = new ArrayList<>();
-
-
         setUpSettingsButton();
         setUpRecyclerView();
         addTaskButton();
         viewAllTasksButton();
         uploadFile();
+
+
     }
 
     private void uploadFile() {

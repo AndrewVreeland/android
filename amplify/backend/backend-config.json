@@ -1,4 +1,10 @@
 {
+  "analytics": {
+    "taskmastermain": {
+      "providerPlugin": "awscloudformation",
+      "service": "Pinpoint"
+    }
+  },
   "api": {
     "taskmastermain": {
       "dependsOn": [],
@@ -7,7 +13,7 @@
           "additionalAuthenticationProviders": [],
           "defaultAuthentication": {
             "apiKeyConfig": {
-              "apiKeyExpirationDate": "2023-07-09T04:47:33.501Z",
+              "apiKeyExpirationDate": "2023-07-13T02:24:28.349Z",
               "apiKeyExpirationDays": 30,
               "description": ""
             },
@@ -45,6 +51,13 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
+    }
+  },
+  "predictions": {
+    "speechGenerator4ac235ce": {
+      "convertType": "speechGenerator",
+      "providerPlugin": "awscloudformation",
+      "service": "Polly"
     }
   },
   "storage": {
